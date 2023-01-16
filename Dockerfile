@@ -3,13 +3,13 @@ FROM node:16.14 as develop-stage
 WORKDIR /app
 COPY package*.json .npmrc ./
 
-RUN yarn global add @quasar/cli
+RUN npm i -g @quasar/cli
 EXPOSE 8080
 COPY . .
 
 # build stage
 FROM develop-stage as build-stage
-RUN yarn
+RUN npm i
 RUN quasar build
 
 # production stage

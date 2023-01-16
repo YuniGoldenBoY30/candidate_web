@@ -7,7 +7,26 @@ import axios from 'axios'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.example.com' })
+// const api = axios.create({ baseURL: 'https://94a078a7ce5f.ngrok.io/v1/api' })
+import {backURL} from "src/utils/utils";
+const api = axios.create({ baseURL: backURL() })
+
+
+const axiosConfig = axios.create({
+  baseURL: backURL(),
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+    "Access-Control-Allow-Origin": "*",
+    "Accept":"application/json",
+    "access-key": 'Bearer iowl3HM3OPNYPdk6H497w1OEGbWxVauua6akOJib'
+  }
+});
+const endpoints = {
+  candidate: '/candidates/',
+  techs: '/techs/'
+}
+
+
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
@@ -21,4 +40,4 @@ export default boot(({ app }) => {
   //       so you can easily perform requests against your app's API
 })
 
-export { api }
+export { api, endpoints,axiosConfig }
