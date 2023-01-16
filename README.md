@@ -1,4 +1,4 @@
-# Quasar App (front-quasar)
+# Quasar App (droneapp)
 
 A Quasar Project
 
